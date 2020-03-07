@@ -5,6 +5,10 @@ import {Switch, Route, BrowserRouter as Router} from "react-router-dom";
 
 import Header from "./Header";
 import MainBody from "./MainBody";
+import ArchiveBody from "./ArchiveBody";
+import MentorBody from "./MentorBody";
+import SearchBody from "./SearchBody";
+import StudentBody from "./StudentBody";
 import Footer from "./Footer";
 
 function App() {
@@ -13,7 +17,22 @@ function App() {
 			<div className="App" style={{width: "80%", margin: "1em auto"}}>
 				<Header />
 				<Switch>
-					<Route match="main">
+					<Route path="/home">
+						<MainBody />
+					</Route>
+					<Route path="/students">
+						<StudentBody />
+					</Route>
+					<Route path="/mentors">
+						<MentorBody />
+					</Route>
+					<Route path="/board">
+						<SearchBody />
+					</Route>
+					<Route path="/archive">
+						<ArchiveBody />
+					</Route>
+					<Route>
 						<MainBody />
 					</Route>
 				</Switch>

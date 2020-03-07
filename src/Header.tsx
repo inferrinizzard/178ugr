@@ -45,18 +45,34 @@ const Header: React.SFC<HeaderProps> = () => {
 					/>
 				</div>
 			</div>
-			<div>
+			<div style={{marginTop: ".25em"}}>
 				<ButtonGroup style={{width: "100%"}}>
-					<Button component={NavLink} to="students" style={{width: "25%"}}>
+					<Button
+						component={NavLink}
+						to="students"
+						activeClassName="atHeader"
+						style={{width: "25%"}}>
 						For Students
 					</Button>
-					<Button component={NavLink} to="mentors" style={{width: "25%"}}>
+					<Button
+						component={NavLink}
+						to="mentors"
+						activeClassName="atHeader"
+						style={{width: "25%"}}>
 						For Mentors
 					</Button>
-					<Button component={NavLink} to="archive" style={{width: "25%"}}>
+					<Button
+						component={NavLink}
+						to="archive"
+						activeClassName="atHeader"
+						style={{width: "25%"}}>
 						Archive
 					</Button>
-					<Button component={NavLink} to="contact" style={{width: "25%"}}>
+					<Button
+						component={NavLink}
+						to="contact"
+						activeClassName="atHeader"
+						style={{width: "25%"}}>
 						Contact
 					</Button>
 				</ButtonGroup>
