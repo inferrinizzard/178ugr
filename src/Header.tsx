@@ -13,25 +13,27 @@ const Header: React.SFC<HeaderProps> = () => {
 	return (
 		<header>
 			<div>
-				<div style={{display: "inline-block", height: "3em"}}>
+				<div style={{ display: "inline-block", height: "3em", width: "20%" }}>
 					<Logo />
 				</div>
-				<Typography variant="h3" style={{display: "inline"}}>
+				<Typography
+					variant="h3"
+					style={{ display: "inline-block", width: "55%" }}>
 					Undergraduate Research
 				</Typography>
 				<TextField
 					// label="Search Undergraduate Research"
 					label="Search"
 					variant="outlined"
-					style={{display: "inline"}}
+					style={{ display: "inline-block", width: "25%" }}
 				/>
 			</div>
 			<div>
-				<ButtonGroup style={{width: "100%"}}>
-					<Button style={{width: "25%"}}>For Students</Button>
-					<Button style={{width: "25%"}}>For Mentors</Button>
-					<Button style={{width: "25%"}}>Archive</Button>
-					<Button style={{width: "25%"}}>Contact</Button>
+				<ButtonGroup style={{ width: "100%" }}>
+					<Button style={{ width: "25%" }}>For Students</Button>
+					<Button style={{ width: "25%" }}>For Mentors</Button>
+					<Button style={{ width: "25%" }}>Archive</Button>
+					<Button style={{ width: "25%" }}>Contact</Button>
 				</ButtonGroup>
 			</div>
 		</header>
