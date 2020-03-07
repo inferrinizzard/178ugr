@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -13,15 +14,18 @@ import Assignment from "@material-ui/icons/AssignmentRounded";
 
 import Divider from "@material-ui/core/Divider";
 
+import Outline from "./NotchedOutline";
+
 interface SectionProps {
 	left?: boolean;
 	title: string;
 }
 
-const Section: React.SFC<SectionProps> = ({ left, title, children }) => {
+const Section: React.SFC<SectionProps> = ({left, title, children}) => {
 	return (
 		<div
 			style={{
+				verticalAlign: "top",
 				width: "calc(50% - 1em)",
 				display: "inline-block",
 				padding: ".5em",
@@ -36,8 +40,8 @@ const Section: React.SFC<SectionProps> = ({ left, title, children }) => {
 					}}
 				/>
 				<Divider />
-				<CardContent style={{ padding: ".5em" }}>
-					<List>{children}</List>
+				<CardContent style={{padding: ".5em"}}>
+					<List> {children} </List>
 				</CardContent>
 			</Card>
 		</div>
@@ -45,13 +49,19 @@ const Section: React.SFC<SectionProps> = ({ left, title, children }) => {
 };
 
 export interface ListingProps {
-	primary: string;
+	primary?: string;
 	secondary?: string;
+	to: string;
 }
 
-const Listing: React.SFC<ListingProps> = ({ primary, secondary }) => {
+const Listing: React.SFC<ListingProps> = ({primary, secondary, to}) => {
 	return (
-		<ListItem button style={{ borderRadius: ".5em" }}>
+		<ListItem
+			button
+			dense={!primary}
+			component={Link}
+			to={to}
+			style={{borderRadius: ".5em"}}>
 			<ListItemText primary={primary} secondary={secondary} />
 		</ListItem>
 	);
@@ -61,26 +71,47 @@ export interface MainBodyProps {}
 
 const MainBody: React.SFC<MainBodyProps> = () => {
 	return (
-		<div style={{ margin: "1em auto" }}>
-			<img src="5.jpg" alt="banner" />
+		<div style={{margin: "1em auto"}}>
+			<Outline>
+				<img src="5.jpg" alt="banner" style={{width: "100%"}} />
+			</Outline>
 			<div>
 				<Section left title="Frequently Asked Questions">
-					<Listing primary="What is Undergraduate Research (UGR)?" />
-					<Listing primary="How can I get involved?" />
-					<Listing primary="How does UGR help me as a graduate applicant?" />
-					<Listing primary="Does UGR look good on my resume?" />
-					<Listing primary="What sorts of projects are available?" />
+					<Listing
+						primary="What is Undergraduate Research (UGR)?"
+						to="students#faq1"
+					/>
+					<Listing primary="How can I get involved?" to="students#faq2" />
+					<Listing
+						primary="How does UGR help me as a graduate applicant?"
+						to="students#faq3"
+					/>
+					<Listing
+						primary="Does UGR look good on my resume?"
+						to="students#faq4"
+					/>
+					<Listing
+						primary="What sorts of projects are available?"
+						to="students#faq5"
+					/>
+					<Listing secondary="Learn more here" to="students#faq" />
 				</Section>
 				<Section title="Currently Open Positions">
 					<Listing
 						primary="Physical Lab Sciences - Lab Assistant"
 						secondary="Ongoing Application"
+						to="board"
 					/>
 					<Listing
 						primary="Video Games Psychology Study"
 						secondary="Application available January 14, 2020"
+						to="board"
 					/>
-					<Listing primary="Japanese Post-War History - Independent Project" />
+					<Listing
+						primary="Japanese Post-War History - Independent Project"
+						to="board"
+					/>
+					<Listing secondary="See more available applications" to="board" />
 				</Section>
 			</div>
 		</div>
