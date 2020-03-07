@@ -1,22 +1,25 @@
-import React, { useState } from "react";
-// import logo from "./logo";
+import React from "react";
 import "./App.css";
+
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 import Header from "./Header";
 import MainBody from "./MainBody";
 import Footer from "./Footer";
 
 function App() {
-	let [page, setPage] = useState("main");
-
 	return (
-		<React.Fragment>
+		<Router>
 			<div className="App" style={{ width: "80%", margin: "1em auto" }}>
 				<Header />
-				{page === "main" && <MainBody />}
+				<Switch>
+					<Route match="main">
+						<MainBody />
+					</Route>
+				</Switch>
 			</div>
 			<Footer />
-		</React.Fragment>
+		</Router>
 	);
 }
 

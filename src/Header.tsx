@@ -1,9 +1,11 @@
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
+// import Tooltip from "@material-ui/core/Tooltip";
 
 import Logo from "./Logo";
 
@@ -19,7 +21,9 @@ const Header: React.SFC<HeaderProps> = () => {
 				<Typography
 					variant="h3"
 					style={{ display: "inline-block", width: "55%" }}>
-					Undergraduate Research
+					<Link to="home" style={{ textDecoration: "none", color: "black" }}>
+						Undergraduate Research
+					</Link>
 				</Typography>
 				<TextField
 					// label="Search Undergraduate Research"
@@ -30,10 +34,18 @@ const Header: React.SFC<HeaderProps> = () => {
 			</div>
 			<div>
 				<ButtonGroup style={{ width: "100%" }}>
-					<Button style={{ width: "25%" }}>For Students</Button>
-					<Button style={{ width: "25%" }}>For Mentors</Button>
-					<Button style={{ width: "25%" }}>Archive</Button>
-					<Button style={{ width: "25%" }}>Contact</Button>
+					<Button component={NavLink} to="students" style={{ width: "25%" }}>
+						For Students
+					</Button>
+					<Button component={NavLink} to="mentors" style={{ width: "25%" }}>
+						For Mentors
+					</Button>
+					<Button component={NavLink} to="archive" style={{ width: "25%" }}>
+						Archive
+					</Button>
+					<Button component={NavLink} to="contact" style={{ width: "25%" }}>
+						Contact
+					</Button>
 				</ButtonGroup>
 			</div>
 		</header>

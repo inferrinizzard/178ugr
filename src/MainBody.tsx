@@ -13,6 +13,37 @@ import Assignment from "@material-ui/icons/AssignmentRounded";
 
 import Divider from "@material-ui/core/Divider";
 
+interface SectionProps {
+	left?: boolean;
+	title: string;
+}
+
+const Section: React.SFC<SectionProps> = ({ left, title, children }) => {
+	return (
+		<div
+			style={{
+				width: "calc(50% - 1em)",
+				display: "inline-block",
+				padding: ".5em",
+			}}>
+			<Card variant="outlined">
+				<CardHeader
+					title={title}
+					avatar={left ? <QuestionAnswer /> : <Assignment />}
+					titleTypographyProps={{
+						align: "left",
+						variant: "h5",
+					}}
+				/>
+				<Divider />
+				<CardContent style={{ padding: ".5em" }}>
+					<List>{children}</List>
+				</CardContent>
+			</Card>
+		</div>
+	);
+};
+
 export interface ListingProps {
 	primary: string;
 	secondary?: string;
@@ -26,68 +57,34 @@ const Listing: React.SFC<ListingProps> = ({ primary, secondary }) => {
 	);
 };
 
-export interface BodyProps {}
+export interface MainBodyProps {}
 
-const Body: React.SFC<BodyProps> = () => {
+const MainBody: React.SFC<MainBodyProps> = () => {
 	return (
 		<div style={{ margin: "1em auto" }}>
 			<img src="5.jpg" alt="banner" />
 			<div>
-				<div
-					style={{
-						width: "calc(50% - 1em)",
-						display: "inline-block",
-						padding: ".5em",
-					}}>
-					<Card variant="outlined">
-						<CardHeader
-							title="Frequently Asked Questions"
-							avatar={<QuestionAnswer />}
-							titleTypographyProps={{ align: "left", variant: "h5" }}
-						/>
-						<Divider />
-						<CardContent style={{ padding: ".5em" }}>
-							<List>
-								<Listing primary="What is Undergraduate Research (UGR)?" />
-								<Listing primary="How can I get involved?" />
-								<Listing primary="How does UGR help me as a graduate applicant?" />
-								<Listing primary="Does UGR look good on my resume?" />
-								<Listing primary="What sorts of projects are available?" />
-							</List>
-						</CardContent>
-					</Card>
-				</div>
-				<div
-					style={{
-						width: "calc(50% - 1em)",
-						display: "inline-block",
-						padding: ".5em",
-					}}>
-					<Card variant="outlined">
-						<CardHeader
-							title="Current Open Positions"
-							avatar={<Assignment />}
-							titleTypographyProps={{ align: "left", variant: "h5" }}
-						/>
-						<Divider />
-						<CardContent style={{ padding: ".5em" }}>
-							<List>
-								<Listing
-									primary="Physical Lab Sciences - Lab Assistant"
-									secondary="Ongoing Application"
-								/>
-								<Listing
-									primary="Video Games Psychology Study"
-									secondary="Application available January 14, 2020"
-								/>
-								<Listing primary="Japanese Post-War History - Independent Project" />
-							</List>
-						</CardContent>
-					</Card>
-				</div>
+				<Section left title="Frequently Asked Questions">
+					<Listing primary="What is Undergraduate Research (UGR)?" />
+					<Listing primary="How can I get involved?" />
+					<Listing primary="How does UGR help me as a graduate applicant?" />
+					<Listing primary="Does UGR look good on my resume?" />
+					<Listing primary="What sorts of projects are available?" />
+				</Section>
+				<Section title="Currently Open Positions">
+					<Listing
+						primary="Physical Lab Sciences - Lab Assistant"
+						secondary="Ongoing Application"
+					/>
+					<Listing
+						primary="Video Games Psychology Study"
+						secondary="Application available January 14, 2020"
+					/>
+					<Listing primary="Japanese Post-War History - Independent Project" />
+				</Section>
 			</div>
 		</div>
 	);
 };
 
-export default Body;
+export default MainBody;
