@@ -34,8 +34,7 @@ const Header: React.SFC<HeaderProps> = () => {
 						verticalAlign: "top",
 					}}>
 					<TextField
-						// label="Search Undergraduate Research"
-						label="Search"
+						label="Search UGR"
 						variant="outlined"
 						style={{float: "right"}}
 						InputProps={{

@@ -1,0 +1,16 @@
+{
+	"test": {
+		"title": "Title",
+		"desc": "Desciption",
+		"req": ["lorem", "ipsum", "dolor"],
+		"pref": ["a", "b", "c"],
+		"contact": "talk to me"
+	},
+	"vr": {
+		"title": "Virtual Reality Programmer",
+		"desc": "The Creative Coding Lab is looking for a research assistant to help out with a new VR Project",
+		"req": ["CSE 101", "CSE 109", "CMPM 10X"],
+		"pref": ["Experience with VR/XR"],
+		"contact": "If you have any questions or concerns, please contact"
+	}
+}
