@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import Divider from "@material-ui/core/Divider";
 
@@ -23,7 +22,7 @@ interface SkillsListProps {
 	list: string[];
 }
 
-const SkillsList: React.SFC<SkillsListProps> = ({title, list}) => {
+const SkillsList: React.SFC<SkillsListProps> = ({ title, list }) => {
 	return (
 		(!!list.length && (
 			<>
@@ -32,7 +31,7 @@ const SkillsList: React.SFC<SkillsListProps> = ({title, list}) => {
 				</Typography>
 				<List>
 					{list.map((l, i) => (
-						<ListItem key={i} style={{paddingTop: 0, paddingBottom: 0}}>
+						<ListItem key={i} style={{ paddingTop: 0, paddingBottom: 0 }}>
 							<ListItemText primary={"- " + l} />
 						</ListItem>
 					))}
@@ -49,7 +48,7 @@ const SearchBody: React.SFC<SearchBodyProps> = () => {
 	let [keyword, setKeyword] = useState("");
 
 	return (
-		<div style={{margin: "1em auto"}}>
+		<div style={{ margin: "1em auto" }}>
 			<Typography variant="h4" align="left">
 				Search for Positions
 			</Typography>
@@ -60,42 +59,47 @@ const SearchBody: React.SFC<SearchBodyProps> = () => {
 						variant="outlined"
 						InputProps={{
 							endAdornment: <Search />,
-							style: {paddingRight: "8px"},
+							style: { paddingRight: "8px" },
 						}}
 						onChange={e => setKeyword(e.target.value.toLowerCase())}
+						style={{ float: "left", paddingBottom: "1em" }}
 					/>
-					{(keyword
-						? Object.entries(positions).filter(([k, p]) =>
-								Object.values(p).some(tag =>
-									Array.isArray(tag)
-										? tag.some(t => t.toLowerCase().includes(keyword))
-										: tag.toLowerCase().includes(keyword)
-								)
-						  )
-						: Object.entries(positions)
-					).map(([key, {title: t, desc: d, req: r, pref: p, contact: c}]) => (
-						<React.Fragment key={key}>
-							<Divider />
-							<Box marginLeft="2em" id={key}>
-								<Typography variant="h5" align="left">
-									{t}
-								</Typography>
-								<Typography variant="body1" align="left">
-									{d}
-								</Typography>
-								<SkillsList title="Requirements:" list={r} />
-								<SkillsList title="Preferred Skills:" list={p} />
-								<Typography variant="body2" align="left">
-									{c}
-								</Typography>
-								<Tooltip title="Dead Link" dir="right">
-									<Typography variant="body1" align="left">
-										{"Apply Here!"}
-									</Typography>
-								</Tooltip>
-							</Box>
-						</React.Fragment>
-					))}
+					<div style={{ clear: "left" }}>
+						{(keyword
+							? Object.entries(positions).filter(([k, p]) =>
+									Object.values(p).some(tag =>
+										Array.isArray(tag)
+											? tag.some(t => t.toLowerCase().includes(keyword))
+											: tag.toLowerCase().includes(keyword)
+									)
+							  )
+							: Object.entries(positions)
+						).map(
+							([key, { title: t, desc: d, req: r, pref: p, contact: c }]) => (
+								<React.Fragment key={key}>
+									<Divider />
+									<Box margin="1em" marginLeft="2em" id={key}>
+										<Typography variant="h5" align="left">
+											{t}
+										</Typography>
+										<Typography variant="body1" align="left">
+											{d}
+										</Typography>
+										<SkillsList title="Requirements:" list={r} />
+										<SkillsList title="Preferred Skills:" list={p} />
+										<Typography variant="body2" align="left">
+											{c}
+										</Typography>
+										<Tooltip title="Dead Link" dir="right">
+											<Typography variant="body1" align="left">
+												{"Apply Here!"}
+											</Typography>
+										</Tooltip>
+									</Box>
+								</React.Fragment>
+							)
+						)}
+					</div>
 				</CardContent>
 			</Card>
 		</div>
