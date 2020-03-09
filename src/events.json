@@ -1,0 +1,6 @@
+[
+	{ "p": "Old Event", "s": "Lab 1" },
+	{ "p": "Old Event 2", "s": ["Lab 1", "Role B"] },
+	{ "p": "Old Event", "s": "Lab 1" },
+	{ "p": "Old Event", "s": "Lab 1" }
+]

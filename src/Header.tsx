@@ -3,14 +3,12 @@ import { Link, NavLink } from "react-router-dom";
 
 import MLink from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 // import Tooltip from "@material-ui/core/Tooltip";
 
-import Search from "@material-ui/icons/SearchRounded";
-
 import Logo from "./Logo";
+import Search from "./Search";
 
 export interface HeaderProps {}
 
@@ -36,15 +34,7 @@ const Header: React.SFC<HeaderProps> = () => {
 						width: "25%",
 						verticalAlign: "top",
 					}}>
-					<TextField
-						label="Search UGR"
-						variant="outlined"
-						style={{ float: "right" }}
-						InputProps={{
-							endAdornment: <Search />,
-							style: { paddingRight: "8px" },
-						}}
-					/>
+					<Search />
 				</div>
 			</div>
 			<div style={{ marginTop: ".25em" }}>

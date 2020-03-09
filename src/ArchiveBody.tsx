@@ -11,6 +11,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import TextField from "@material-ui/core/TextField";
 import Search from "@material-ui/icons/SearchRounded";
 
+import events from "./events.json";
+
 interface EntryProps {
 	primary: string;
 	secondary?: string | string[];
@@ -45,13 +47,6 @@ export const Entry: React.SFC<EntryProps & HTMLAttributes<HTMLLIElement>> = ({
 		</>
 	);
 };
-
-const events = [
-	{ p: "Old Event", s: "Lab 1" },
-	{ p: "Old Event 2", s: ["Lab 1", "Role B"] },
-	{ p: "Old Event", s: "Lab 1" },
-	{ p: "Old Event", s: "Lab 1" },
-];
 
 export interface ArchiveBodyProps {}
 
