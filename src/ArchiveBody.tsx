@@ -18,15 +18,12 @@ interface EntryProps {
 	secondary: string | string[];
 }
 
-const Entry: React.SFC<EntryProps> = ({ primary, secondary }) => {
+export const Entry: React.SFC<EntryProps> = ({ primary, secondary }) => {
 	let long = Array.isArray(secondary);
 	return (
 		<>
 			<ListItem style={{ paddingBottom: long ? 0 : undefined }}>
-				<ListItemText
-					primary={primary}
-					secondary={long ? secondary[0] : secondary}
-				/>
+				<ListItemText primary={primary} secondary={long ? secondary[0] : secondary} />
 			</ListItem>
 			{long &&
 				(secondary as string[]).slice(1).map((s, i) => (
@@ -43,6 +40,13 @@ const Entry: React.SFC<EntryProps> = ({ primary, secondary }) => {
 		</>
 	);
 };
+
+const events = [
+	{ p: "Old Event", s: "Lab 1" },
+	{ p: "Old Event 2", s: ["Lab 1", "Role B"] },
+	{ p: "Old Event", s: "Lab 1" },
+	{ p: "Old Event", s: "Lab 1" },
+];
 
 export interface ArchiveBodyProps {}
 
@@ -63,9 +67,18 @@ const ArchiveBody: React.SFC<ArchiveBodyProps> = () => {
 						style={{ float: "left", paddingBottom: "1em" }}
 					/>
 					<List style={{ clear: "left" }}>
-						<Entry primary="Old Event" secondary="Lab 1" />
-						<Entry primary="Old Event 2" secondary={["Lab 1", "Role B"]} />
-						<Entry primary="Old Event" secondary="Lab 1" />
+						{(keyword
+							? events.filter(
+									({ p: k, s: v }) =>
+										k.toLowerCase().includes(keyword) ||
+										(Array.isArray(v)
+											? v.some(t => t.toLowerCase().includes(keyword))
+											: v.toLowerCase().includes(keyword))
+							  )
+							: events
+						).map(({ p: primary, s: secondary }, i) => (
+							<Entry key={i} primary={primary} secondary={secondary} />
+						))}
 					</List>
 				</CardContent>
 			</Card>

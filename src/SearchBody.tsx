@@ -66,7 +66,7 @@ const SearchBody: React.SFC<SearchBodyProps> = () => {
 					/>
 					<div style={{ clear: "left" }}>
 						{(keyword
-							? Object.entries(positions).filter(([k, p]) =>
+							? Object.entries(positions).filter(([, p]) =>
 									Object.values(p).some(tag =>
 										Array.isArray(tag)
 											? tag.some(t => t.toLowerCase().includes(keyword))
@@ -74,31 +74,29 @@ const SearchBody: React.SFC<SearchBodyProps> = () => {
 									)
 							  )
 							: Object.entries(positions)
-						).map(
-							([key, { title: t, desc: d, req: r, pref: p, contact: c }]) => (
-								<React.Fragment key={key}>
-									<Divider />
-									<Box margin="1em" marginLeft="2em" id={key}>
-										<Typography variant="h5" align="left">
-											{t}
-										</Typography>
+						).map(([key, { title: t, desc: d, req: r, pref: p, contact: c }]) => (
+							<React.Fragment key={key}>
+								<Divider />
+								<Box margin="1em" marginLeft="2em" id={key}>
+									<Typography variant="h5" align="left">
+										{t}
+									</Typography>
+									<Typography variant="body1" align="left">
+										{d}
+									</Typography>
+									<SkillsList title="Requirements:" list={r} />
+									<SkillsList title="Preferred Skills:" list={p} />
+									<Typography variant="body2" align="left">
+										{c}
+									</Typography>
+									<Tooltip title="Dead Link" dir="right">
 										<Typography variant="body1" align="left">
-											{d}
+											{"Apply Here!"}
 										</Typography>
-										<SkillsList title="Requirements:" list={r} />
-										<SkillsList title="Preferred Skills:" list={p} />
-										<Typography variant="body2" align="left">
-											{c}
-										</Typography>
-										<Tooltip title="Dead Link" dir="right">
-											<Typography variant="body1" align="left">
-												{"Apply Here!"}
-											</Typography>
-										</Tooltip>
-									</Box>
-								</React.Fragment>
-							)
-						)}
+									</Tooltip>
+								</Box>
+							</React.Fragment>
+						))}
 					</div>
 				</CardContent>
 			</Card>
