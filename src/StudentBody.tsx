@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -40,9 +40,8 @@ const Item: React.SFC<ItemProps> = ({ children, link }) => {
 		<ExpansionPanelDetails style={{ padding: "8px" }}>
 			<ListItem
 				button
-				component="a"
-				href={link}
 				dense
+				onClick={() => scroll(link)}
 				style={{ borderRadius: ".5em" }}>
 				<ListItemText primary={children} />
 			</ListItem>
@@ -57,7 +56,16 @@ const Item: React.SFC<ItemProps> = ({ children, link }) => {
 
 export interface StudentBodyProps {}
 
+const scroll = (id: string) =>
+	document?.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
 const StudentBody: React.SFC<StudentBodyProps> = () => {
+	useEffect(() => {
+		if (window.location.href.includes("#"))
+			scroll(window.location.href.split("#")[1]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	return (
 		<div style={{ margin: "1em auto" }}>
 			<Card
@@ -72,7 +80,7 @@ const StudentBody: React.SFC<StudentBodyProps> = () => {
 					<Summary>Application Tips</Summary>
 					<Divider />
 					{tips.map(({ s: t }, i) => (
-						<Item key={i} link={"#tips" + (i + 1)}>
+						<Item key={i} link={"tips" + (i + 1)}>
 							{t}
 						</Item>
 					))}
@@ -81,7 +89,7 @@ const StudentBody: React.SFC<StudentBodyProps> = () => {
 					<Summary>Frequently Asked Questions</Summary>
 					<Divider />
 					{questions.map(({ q: question }, i) => (
-						<Item key={i} link={"#faq" + (i + 1)}>
+						<Item key={i} link={"faq" + (i + 1)}>
 							{question}
 						</Item>
 					))}
