@@ -59,8 +59,8 @@ const NotchedOutline: React.SFC<NotchedOutlineProps> = props => {
 			hoverColour={props.hoverColour}
 			focusColour={props.focusColour}
 			weight={props.weight}>
-			<Legend style={{width: props.width ? props.width : 0}}>
-				<Typography style={{display: "inline"}}>
+			<Legend style={{ width: props.width ? props.width : 0 }}>
+				<Typography style={{ display: "inline" }}>
 					{props.title ? props.title : ""}
 				</Typography>
 			</Legend>

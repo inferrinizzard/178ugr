@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -21,7 +21,7 @@ interface SectionProps {
 	title: string;
 }
 
-const Section: React.SFC<SectionProps> = ({left, title, children}) => {
+const Section: React.SFC<SectionProps> = ({ left, title, children }) => {
 	return (
 		<div
 			style={{
@@ -40,7 +40,7 @@ const Section: React.SFC<SectionProps> = ({left, title, children}) => {
 					}}
 				/>
 				<Divider />
-				<CardContent style={{padding: ".5em"}}>
+				<CardContent style={{ padding: ".5em" }}>
 					<List> {children} </List>
 				</CardContent>
 			</Card>
@@ -54,14 +54,14 @@ export interface ListingProps {
 	to: string;
 }
 
-const Listing: React.SFC<ListingProps> = ({primary, secondary, to}) => {
+const Listing: React.SFC<ListingProps> = ({ primary, secondary, to }) => {
 	return (
 		<ListItem
 			button
 			dense={!primary}
 			component={Link}
 			to={to}
-			style={{borderRadius: ".5em"}}>
+			style={{ borderRadius: ".5em" }}>
 			<ListItemText primary={primary} secondary={secondary} />
 		</ListItem>
 	);
@@ -71,9 +71,9 @@ export interface MainBodyProps {}
 
 const MainBody: React.SFC<MainBodyProps> = () => {
 	return (
-		<div style={{margin: "1em auto"}}>
+		<div style={{ margin: "1em auto" }}>
 			<Outline>
-				<img src="5.jpg" alt="banner" style={{width: "100%"}} />
+				<img src="5.jpg" alt="banner" style={{ width: "100%" }} />
 			</Outline>
 			<div>
 				<Section left title="Frequently Asked Questions">
