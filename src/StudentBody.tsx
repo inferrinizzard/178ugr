@@ -29,12 +29,19 @@ const Summary: React.SFC<SummaryProps> = ({ children }) => {
 	);
 };
 
-interface ItemProps {}
+interface ItemProps {
+	link: string;
+}
 
-const Item: React.SFC<ItemProps> = ({ children }) => {
+const Item: React.SFC<ItemProps> = ({ children, link }) => {
 	return (
 		<ExpansionPanelDetails style={{ padding: "8px" }}>
-			<ListItem button dense style={{ borderRadius: ".5em" }}>
+			<ListItem
+				button
+				component="a"
+				href={link}
+				dense
+				style={{ borderRadius: ".5em" }}>
 				<ListItemText primary={children} />
 			</ListItem>
 			{/* <Typography
@@ -96,13 +103,15 @@ const StudentBody: React.SFC<StudentBodyProps> = () => {
 				<ExpansionPanel>
 					<Summary>Overview</Summary>
 					<Divider />
-					<Item>Test</Item>
+					<Item link="">Test</Item>
 				</ExpansionPanel>
 				<ExpansionPanel>
 					<Summary>Frequently Asked Questions</Summary>
 					<Divider />
 					{questions.map(({ q: question }, i) => (
-						<Item key={i}>{question}</Item>
+						<Item key={i} link={"#faq" + (i + 1)}>
+							{question}
+						</Item>
 					))}
 				</ExpansionPanel>
 			</Card>
@@ -122,7 +131,7 @@ const StudentBody: React.SFC<StudentBodyProps> = () => {
 						}}
 					/>
 				</Card>
-				<Card variant="outlined">
+				<Card variant="outlined" id="faq">
 					<CardHeader
 						title="Frequently Asked Questions"
 						titleTypographyProps={{
@@ -133,7 +142,12 @@ const StudentBody: React.SFC<StudentBodyProps> = () => {
 					<CardContent>
 						<List>
 							{questions.map(({ q: question, a: answer }, i) => (
-								<Entry primary={question} secondary={answer.split("\n")} />
+								<Entry
+									key={i}
+									id={"faq" + (i + 1)}
+									primary={question}
+									secondary={answer.split("\n")}
+								/>
 							))}
 						</List>
 					</CardContent>

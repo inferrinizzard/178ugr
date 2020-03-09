@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, HTMLAttributes } from "react";
 
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -16,11 +16,15 @@ interface EntryProps {
 	secondary: string | string[];
 }
 
-export const Entry: React.SFC<EntryProps> = ({ primary, secondary }) => {
+export const Entry: React.SFC<EntryProps & HTMLAttributes<HTMLLIElement>> = ({
+	primary,
+	secondary,
+	...props
+}) => {
 	let long = Array.isArray(secondary);
 	return (
 		<>
-			<ListItem style={{ paddingBottom: long ? 0 : undefined }}>
+			<ListItem style={{ paddingBottom: long ? 0 : undefined }} {...props}>
 				<ListItemText
 					primary={primary}
 					secondary={long ? secondary[0] : secondary}

@@ -81,18 +81,18 @@ const MainBody: React.SFC<MainBodyProps> = () => {
 						primary="What is Undergraduate Research (UGR)?"
 						to="students#faq1"
 					/>
-					<Listing primary="How can I get involved?" to="students#faq2" />
+					<Listing primary="How can I get involved?" to="students#faq4" />
 					<Listing
 						primary="How does UGR help me as a graduate applicant?"
-						to="students#faq3"
+						to="students#faq8"
 					/>
 					<Listing
 						primary="Does UGR look good on my resume?"
-						to="students#faq4"
+						to="students#faq2"
 					/>
 					<Listing
 						primary="What sorts of projects are available?"
-						to="students#faq5"
+						to="students#faq7"
 					/>
 					<Listing secondary="Learn more here" to="students#faq" />
 				</Section>
