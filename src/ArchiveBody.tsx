@@ -13,7 +13,7 @@ import Search from "@material-ui/icons/SearchRounded";
 
 interface EntryProps {
 	primary: string;
-	secondary: string | string[];
+	secondary?: string | string[];
 }
 
 export const Entry: React.SFC<EntryProps & HTMLAttributes<HTMLLIElement>> = ({
@@ -27,7 +27,7 @@ export const Entry: React.SFC<EntryProps & HTMLAttributes<HTMLLIElement>> = ({
 			<ListItem style={{ paddingBottom: long ? 0 : undefined }} {...props}>
 				<ListItemText
 					primary={primary}
-					secondary={long ? secondary[0] : secondary}
+					secondary={long ? secondary![0] : secondary}
 				/>
 			</ListItem>
 			{long &&
@@ -37,7 +37,7 @@ export const Entry: React.SFC<EntryProps & HTMLAttributes<HTMLLIElement>> = ({
 						key={i}
 						style={{
 							paddingTop: 0,
-							paddingBottom: i !== secondary.length - 2 ? 0 : undefined,
+							paddingBottom: i !== secondary!.length - 2 ? 0 : undefined,
 						}}>
 						<ListItemText secondary={s} />
 					</ListItem>
