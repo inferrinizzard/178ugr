@@ -4,13 +4,11 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Divider from "@material-ui/core/Divider";
 
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
+import TextField from "@material-ui/core/TextField";
 import Search from "@material-ui/icons/SearchRounded";
 
 interface EntryProps {
@@ -23,7 +21,10 @@ export const Entry: React.SFC<EntryProps> = ({ primary, secondary }) => {
 	return (
 		<>
 			<ListItem style={{ paddingBottom: long ? 0 : undefined }}>
-				<ListItemText primary={primary} secondary={long ? secondary[0] : secondary} />
+				<ListItemText
+					primary={primary}
+					secondary={long ? secondary[0] : secondary}
+				/>
 			</ListItem>
 			{long &&
 				(secondary as string[]).slice(1).map((s, i) => (
@@ -66,6 +67,7 @@ const ArchiveBody: React.SFC<ArchiveBodyProps> = () => {
 						onChange={e => setKeyword(e.target.value.toLowerCase())}
 						style={{ float: "left", paddingBottom: "1em" }}
 					/>
+					<Divider />
 					<List style={{ clear: "left" }}>
 						{(keyword
 							? events.filter(

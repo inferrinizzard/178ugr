@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 
-import {Switch, Route, BrowserRouter as Router} from "react-router-dom";
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 import Header from "./Header";
 import MainBody from "./MainBody";
@@ -14,7 +14,7 @@ import Footer from "./Footer";
 function App() {
 	return (
 		<Router>
-			<div className="App" style={{width: "80%", margin: "1em auto"}}>
+			<div className="App" style={{ width: "80%", margin: "1em auto" }}>
 				<Header />
 				<Switch>
 					<Route path="/home">
@@ -26,7 +26,7 @@ function App() {
 					<Route path="/mentors">
 						<MentorBody />
 					</Route>
-					<Route path="/board">
+					<Route path="/board:id">
 						<SearchBody />
 					</Route>
 					<Route path="/archive">

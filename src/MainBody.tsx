@@ -100,16 +100,16 @@ const MainBody: React.SFC<MainBodyProps> = () => {
 					<Listing
 						primary="Physical Lab Sciences - Lab Assistant"
 						secondary="Ongoing Application"
-						to="board"
+						to="board:plab"
 					/>
 					<Listing
 						primary="Video Games Psychology Study"
 						secondary="Application available January 14, 2020"
-						to="board"
+						to="board:vgame"
 					/>
 					<Listing
 						primary="Japanese Post-War History - Independent Project"
-						to="board"
+						to="board:japost"
 					/>
 					<Listing secondary="See more available applications" to="board" />
 				</Section>
