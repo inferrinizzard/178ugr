@@ -60,7 +60,11 @@ const MentorBody: React.SFC<MentorBodyProps> = () => {
 							<Button
 								variant="outlined"
 								onClick={() => {
-									setPressed(true);
+									if (
+										((subjRef as unknown) as HTMLInputElement).value ||
+										((descRef as unknown) as HTMLTextAreaElement).value
+									)
+										setPressed(true);
 									((subjRef as unknown) as HTMLInputElement).value = "";
 									((descRef as unknown) as HTMLTextAreaElement).value = "";
 								}}

@@ -63,7 +63,7 @@ const ArchiveBody: React.SFC<ArchiveBodyProps> = () => {
 						onChange={e => setKeyword(e.target.value.toLowerCase())}
 						style={{ float: "left", paddingBottom: "1em" }}
 					/>
-					<Divider />
+					<Divider style={{ clear: "left" }} />
 					<List style={{ clear: "left" }}>
 						{(keyword
 							? events.filter(

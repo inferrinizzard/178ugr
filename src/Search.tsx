@@ -25,7 +25,7 @@ const Search: React.SFC<SearchProps> = () => {
 			<TextField
 				label="Search UGR"
 				variant="outlined"
-				style={{ float: "right" }}
+				style={{ float: "right", backgroundColor: "white" }}
 				InputProps={{
 					endAdornment: <SearchRounded />,
 					style: { paddingRight: "8px" },
@@ -42,33 +42,21 @@ const Search: React.SFC<SearchProps> = () => {
 				style={{ backgroundColor: "white" }}>
 				<List>
 					{(questions.some(
-						({ q, a }) =>
-							q.toLowerCase().includes(search) ||
-							a.toLowerCase().includes(search)
+						({ q, a }) => q.toLowerCase().includes(search) || a.toLowerCase().includes(search)
 					) ||
 						tips.some(
-							({ s, d }) =>
-								s.toLowerCase().includes(search) ||
-								d.toLowerCase().includes(search)
+							({ s, d }) => s.toLowerCase().includes(search) || d.toLowerCase().includes(search)
 						)) && (
-						<ListItem
-							component={Link}
-							to="students"
-							onClick={() => setSearch("")}>
+						<ListItem component={Link} to="students" onClick={() => setSearch("")}>
 							<ListItemText primary="Found in: Students Page" />
 						</ListItem>
 					)}
 					{
-						<ListItem
-							component={Link}
-							to="mentors"
-							onClick={() => setSearch("")}>
+						<ListItem component={Link} to="mentors" onClick={() => setSearch("")}>
 							<ListItemText primary="Found in: Mentor Page" />
 						</ListItem>
 					}
-					{Object.entries(
-						positions
-					).some(([k, { title, desc, req, pref, contact }]) =>
+					{Object.entries(positions).some(([k, { title, desc, req, pref, contact }]) =>
 						[
 							k,
 							title,
@@ -83,14 +71,9 @@ const Search: React.SFC<SearchProps> = () => {
 						</ListItem>
 					)}
 					{events.some(({ p, s }) =>
-						[p, ...(Array.isArray(s) ? s : [s])].some(v =>
-							v.toLowerCase().includes(search)
-						)
+						[p, ...(Array.isArray(s) ? s : [s])].some(v => v.toLowerCase().includes(search))
 					) && (
-						<ListItem
-							component={Link}
-							to="archive"
-							onClick={() => setSearch("")}>
+						<ListItem component={Link} to="archive" onClick={() => setSearch("")}>
 							<ListItemText primary="Found in: Archive Page" />
 						</ListItem>
 					)}

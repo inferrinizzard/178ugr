@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 import MLink from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
@@ -13,6 +13,11 @@ import Search from "./Search";
 export interface HeaderProps {}
 
 const Header: React.SFC<HeaderProps> = () => {
+	let [board, setBoard] = useState(false);
+	let location = useLocation();
+
+	useEffect(() => setBoard(location.pathname.includes("board")), [location]);
+
 	return (
 		<header>
 			<div>
@@ -21,10 +26,8 @@ const Header: React.SFC<HeaderProps> = () => {
 					style={{ display: "inline-block", height: "3em", width: "20%" }}>
 					<Logo />
 				</MLink>
-				<Typography
-					variant="h3"
-					style={{ display: "inline-block", width: "55%" }}>
-					<Link to="home" style={{ textDecoration: "none", color: "black" }}>
+				<Typography variant="h3" style={{ display: "inline-block", width: "55%" }}>
+					<Link to="home" style={{ textDecoration: "none", color: "#f5bd00" }}>
 						Undergraduate Research
 					</Link>
 				</Typography>
@@ -43,29 +46,37 @@ const Header: React.SFC<HeaderProps> = () => {
 						component={NavLink}
 						to="home"
 						activeClassName="atHeader"
-						style={{ width: "25%" }}>
-						Home
+						style={{ width: "20%", backgroundColor: "white" }}>
+						<Typography variant="h6">{"Home"}</Typography>
 					</Button>
 					<Button
 						component={NavLink}
 						to="students"
 						activeClassName="atHeader"
-						style={{ width: "25%" }}>
-						For Students
+						style={{ width: "20%", backgroundColor: "white" }}>
+						<Typography variant="h6">{"For Students"}</Typography>
+					</Button>
+					<Button
+						component={NavLink}
+						to="board"
+						className={board ? "atHeader" : undefined}
+						activeClassName="atHeader"
+						style={{ width: "20%", backgroundColor: "white" }}>
+						<Typography variant="h6">{"Positions"}</Typography>
 					</Button>
 					<Button
 						component={NavLink}
 						to="mentors"
 						activeClassName="atHeader"
-						style={{ width: "25%" }}>
-						For Mentors
+						style={{ width: "20%", backgroundColor: "white" }}>
+						<Typography variant="h6">{"For Mentors"}</Typography>
 					</Button>
 					<Button
 						component={NavLink}
 						to="archive"
 						activeClassName="atHeader"
-						style={{ width: "25%" }}>
-						Archive
+						style={{ width: "20%", backgroundColor: "white" }}>
+						<Typography variant="h6">{"Archive"}</Typography>
 					</Button>
 				</ButtonGroup>
 			</div>

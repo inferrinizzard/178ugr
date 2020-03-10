@@ -54,6 +54,9 @@ const SearchBody: React.SFC<SearchBodyProps> = () => {
 		if (!keyword && location.pathname.includes(":")) {
 			setKeyword("#" + location.pathname.split(":")[1]);
 			((searchRef as unknown) as HTMLInputElement).value = "#" + location.pathname.split(":")[1];
+		} else if (keyword && !location.pathname.includes(":")) {
+			setKeyword("#" + location.pathname.split(":")[1]);
+			((searchRef as unknown) as HTMLInputElement).value = "";
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
