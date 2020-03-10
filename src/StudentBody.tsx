@@ -38,11 +38,7 @@ interface ItemProps {
 const Item: React.SFC<ItemProps> = ({ children, link }) => {
 	return (
 		<ExpansionPanelDetails style={{ padding: "8px" }}>
-			<ListItem
-				button
-				dense
-				onClick={() => scroll(link)}
-				style={{ borderRadius: ".5em" }}>
+			<ListItem button dense onClick={() => scroll(link)} style={{ borderRadius: ".5em" }}>
 				<ListItemText primary={children} />
 			</ListItem>
 			{/* <Typography
@@ -56,13 +52,11 @@ const Item: React.SFC<ItemProps> = ({ children, link }) => {
 
 export interface StudentBodyProps {}
 
-const scroll = (id: string) =>
-	document?.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+const scroll = (id: string) => document?.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
 const StudentBody: React.SFC<StudentBodyProps> = () => {
 	useEffect(() => {
-		if (window.location.href.includes("#"))
-			scroll(window.location.href.split("#")[1]);
+		if (window.location.href.includes("#")) scroll(window.location.href.split("#")[1]);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -79,18 +73,18 @@ const StudentBody: React.SFC<StudentBodyProps> = () => {
 				<ExpansionPanel>
 					<Summary>Application Tips</Summary>
 					<Divider />
-					{tips.map(({ s: t }, i) => (
+					{tips.map(({ s }, i) => (
 						<Item key={i} link={"tips" + (i + 1)}>
-							{t}
+							{s}
 						</Item>
 					))}
 				</ExpansionPanel>
 				<ExpansionPanel>
 					<Summary>Frequently Asked Questions</Summary>
 					<Divider />
-					{questions.map(({ q: question }, i) => (
+					{questions.map(({ q }, i) => (
 						<Item key={i} link={"faq" + (i + 1)}>
-							{question}
+							{q}
 						</Item>
 					))}
 				</ExpansionPanel>
@@ -112,8 +106,8 @@ const StudentBody: React.SFC<StudentBodyProps> = () => {
 					/>
 					<CardContent>
 						<List>
-							{tips.map(({ d: t }, i) => (
-								<Entry key={i} id={"tips" + (i + 1)} primary={t} />
+							{tips.map(({ d }, i) => (
+								<Entry key={i} id={"tips" + (i + 1)} primary={d} />
 							))}
 						</List>
 					</CardContent>
@@ -128,13 +122,8 @@ const StudentBody: React.SFC<StudentBodyProps> = () => {
 					/>
 					<CardContent>
 						<List>
-							{questions.map(({ q: question, a: answer }, i) => (
-								<Entry
-									key={i}
-									id={"faq" + (i + 1)}
-									primary={question}
-									secondary={answer.split("\n")}
-								/>
+							{questions.map(({ q, a }, i) => (
+								<Entry key={i} id={"faq" + (i + 1)} primary={q} secondary={a.split("\n")} />
 							))}
 						</List>
 					</CardContent>

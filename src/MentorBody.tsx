@@ -59,9 +59,8 @@ const MentorBody: React.SFC<MentorBodyProps> = () => {
 						<div style={{ clear: "left", float: "left", marginBottom: "1em" }}>
 							<Button
 								variant="outlined"
-								onClick={e => {
+								onClick={() => {
 									setPressed(true);
-									console.log(subjRef, descRef);
 									((subjRef as unknown) as HTMLInputElement).value = "";
 									((descRef as unknown) as HTMLTextAreaElement).value = "";
 								}}

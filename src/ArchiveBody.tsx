@@ -27,10 +27,7 @@ export const Entry: React.SFC<EntryProps & HTMLAttributes<HTMLLIElement>> = ({
 	return (
 		<>
 			<ListItem style={{ paddingBottom: long ? 0 : undefined }} {...props}>
-				<ListItemText
-					primary={primary}
-					secondary={long ? secondary![0] : secondary}
-				/>
+				<ListItemText primary={primary} secondary={long ? secondary![0] : secondary} />
 			</ListItem>
 			{long &&
 				(secondary as string[]).slice(1).map((s, i) => (
@@ -70,15 +67,15 @@ const ArchiveBody: React.SFC<ArchiveBodyProps> = () => {
 					<List style={{ clear: "left" }}>
 						{(keyword
 							? events.filter(
-									({ p: k, s: v }) =>
-										k.toLowerCase().includes(keyword) ||
-										(Array.isArray(v)
-											? v.some(t => t.toLowerCase().includes(keyword))
-											: v.toLowerCase().includes(keyword))
+									({ p, s }) =>
+										p.toLowerCase().includes(keyword) ||
+										(Array.isArray(s)
+											? s.some(t => t.toLowerCase().includes(keyword))
+											: s.toLowerCase().includes(keyword))
 							  )
 							: events
-						).map(({ p: primary, s: secondary }, i) => (
-							<Entry key={i} primary={primary} secondary={secondary} />
+						).map(({ p, s }, i) => (
+							<Entry key={i} primary={p} secondary={s} />
 						))}
 					</List>
 				</CardContent>

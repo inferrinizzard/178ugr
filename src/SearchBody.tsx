@@ -12,7 +12,6 @@ import TextField from "@material-ui/core/TextField";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import Tooltip from "@material-ui/core/Tooltip";
 
 import Search from "@material-ui/icons/SearchRounded";
 
@@ -54,8 +53,7 @@ const SearchBody: React.SFC<SearchBodyProps> = () => {
 	useEffect(() => {
 		if (!keyword && location.pathname.includes(":")) {
 			setKeyword("#" + location.pathname.split(":")[1]);
-			((searchRef as unknown) as HTMLInputElement).value =
-				"#" + location.pathname.split(":")[1];
+			((searchRef as unknown) as HTMLInputElement).value = "#" + location.pathname.split(":")[1];
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
@@ -81,9 +79,7 @@ const SearchBody: React.SFC<SearchBodyProps> = () => {
 					<div style={{ clear: "left" }}>
 						{(keyword
 							? keyword.startsWith("#")
-								? Object.entries(positions).filter(
-										([k]) => k === keyword.slice(1)
-								  )
+								? Object.entries(positions).filter(([k]) => k === keyword.slice(1))
 								: Object.entries(positions).filter(([, p]) =>
 										Object.values(p).some(tag =>
 											Array.isArray(tag)
@@ -92,31 +88,27 @@ const SearchBody: React.SFC<SearchBodyProps> = () => {
 										)
 								  )
 							: Object.entries(positions)
-						).map(
-							([key, { title: t, desc: d, req: r, pref: p, contact: c }]) => (
-								<React.Fragment key={key}>
-									<Divider />
-									<Box margin="1em" marginLeft="2em" id={key}>
-										<Typography variant="h5" align="left">
-											{t}
-										</Typography>
-										<Typography variant="body1" align="left">
-											{d}
-										</Typography>
-										<SkillsList title="Requirements:" list={r} />
-										<SkillsList title="Preferred Skills:" list={p} />
-										<Typography variant="body2" align="left">
-											{c}
-										</Typography>
-										<Tooltip title="Dead Link" dir="right">
-											<Typography variant="body1" align="left">
-												{"Apply Here!"}
-											</Typography>
-										</Tooltip>
-									</Box>
-								</React.Fragment>
-							)
-						)}
+						).map(([key, { title, desc, req, pref, contact }]) => (
+							<React.Fragment key={key}>
+								<Divider />
+								<Box margin="1em" marginLeft="2em" id={key}>
+									<Typography variant="h5" align="left">
+										{title}
+									</Typography>
+									<Typography variant="body1" align="left">
+										{desc}
+									</Typography>
+									<SkillsList title="Requirements:" list={req} />
+									<SkillsList title="Preferred Skills:" list={pref} />
+									<Typography variant="body2" align="left">
+										{contact}
+									</Typography>
+									<Typography variant="body1" align="left">
+										{"Apply Here!"}
+									</Typography>
+								</Box>
+							</React.Fragment>
+						))}
 					</div>
 				</CardContent>
 			</Card>
